@@ -1,0 +1,158 @@
+{
+  "version": "1.0",
+  "description": "Auto-activation rules for SvelteKit PWA development skill",
+  "skills": {
+    "sveltekit-pwa-guidelines": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "description": "Comprehensive guidelines for building mobile-friendly Progressive Web Apps with SvelteKit",
+      "promptTriggers": {
+        "keywords": [
+          "sveltekit pwa",
+          "progressive web app",
+          "service worker",
+          "offline",
+          "push notifications",
+          "web manifest",
+          "installable",
+          "mobile app",
+          "svelte pwa",
+          "cache strategy",
+          "background sync",
+          "web push",
+          "app shell",
+          "workbox",
+          "lighthouse pwa"
+        ],
+        "intentPatterns": [
+          "(create|build|make|develop).*?pwa",
+          "sveltekit.*?(offline|cache|manifest)",
+          "progressive.*?web.*?app",
+          "(add|implement).*?(service worker|push notification)",
+          "make.*?(installable|offline)",
+          "convert.*?to.*?pwa",
+          "mobile.*?web.*?app",
+          "pwa.*?(setup|configuration|deployment)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "**/service-worker.{js,ts}",
+          "**/manifest.json",
+          "**/manifest.webmanifest",
+          "**/.vite-pwa/**/*",
+          "**/sw.{js,ts}",
+          "**/vite.config.{js,ts}"
+        ],
+        "contentPatterns": [
+          "import.*@vite-pwa/sveltekit",
+          "SvelteKitPWA",
+          "navigator.serviceWorker",
+          "self.addEventListener\\(['\"]push['\"]",
+          "self.addEventListener\\(['\"]install['\"]",
+          "self.addEventListener\\(['\"]fetch['\"]",
+          "caches.open",
+          "cache.addAll",
+          "registration.pushManager",
+          "Notification.requestPermission",
+          "webpush",
+          "workbox"
+        ]
+      },
+      "contextTriggers": {
+        "projectIndicators": [
+          "package.json contains @vite-pwa/sveltekit",
+          "package.json contains workbox",
+          "static/manifest.json exists",
+          "src/service-worker.js exists"
+        ]
+      },
+      "activationMessage": "🚀 SvelteKit PWA Guidelines activated! This skill provides comprehensive patterns for:\n• PWA setup and configuration\n• Offline capabilities and caching strategies\n• Push notifications implementation\n• Mobile optimization and touch gestures\n• Performance hardening\n• Accessibility patterns\n• Testing and deployment strategies\n\nUse the resource files for detailed implementation guides.",
+      "deactivationTriggers": {
+        "keywords": ["skip pwa", "no pwa", "disable pwa"],
+        "sessionFlags": ["PWA_GUIDELINES_SKIP"]
+      }
+    }
+  },
+  "rules": {
+    "autoSuggest": {
+      "enabled": true,
+      "conditions": [
+        {
+          "when": "file_created",
+          "matches": ["manifest.json", "service-worker.js"],
+          "suggest": "sveltekit-pwa-guidelines"
+        },
+        {
+          "when": "package_installed",
+          "matches": ["@vite-pwa/sveltekit", "workbox-*"],
+          "suggest": "sveltekit-pwa-guidelines"
+        },
+        {
+          "when": "error_encountered",
+          "matches": ["service worker registration failed", "manifest parsing error"],
+          "suggest": "sveltekit-pwa-guidelines"
+        }
+      ]
+    },
+    "validation": {
+      "enabled": true,
+      "checks": [
+        {
+          "file": "manifest.json",
+          "rules": [
+            "must have name and short_name",
+            "must have at least one 192x192 icon",
+            "must have at least one 512x512 icon",
+            "must have display property",
+            "must have start_url"
+          ]
+        },
+        {
+          "file": "service-worker.js",
+          "rules": [
+            "must handle install event",
+            "must handle fetch event",
+            "should implement caching strategy",
+            "should handle offline scenarios"
+          ]
+        }
+      ]
+    },
+    "suggestions": {
+      "onFileEdit": {
+        "vite.config.js": [
+          "Consider adding @vite-pwa/sveltekit plugin for PWA features",
+          "Configure workbox options for optimal caching"
+        ],
+        "app.html": [
+          "Add viewport meta tag with viewport-fit=cover for iOS",
+          "Include theme-color meta tag",
+          "Link to manifest.json",
+          "Add apple-touch-icon links"
+        ],
+        "+layout.svelte": [
+          "Implement install prompt component",
+          "Add update notification component",
+          "Include offline indicator"
+        ]
+      }
+    }
+  },
+  "metadata": {
+    "author": "SvelteKit PWA Guidelines",
+    "version": "1.0.0",
+    "lastUpdated": "2024-11-15",
+    "compatibility": {
+      "sveltekit": ">=1.0.0",
+      "vite": ">=4.0.0"
+    },
+    "relatedSkills": [
+      "sveltekit-security-hardening",
+      "frontend-performance-optimization",
+      "mobile-web-development",
+      "accessibility-guidelines"
+    ]
+  }
+}

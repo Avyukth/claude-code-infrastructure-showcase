@@ -218,6 +218,324 @@
                     "captureMessage"
                 ]
             }
+        },
+        "production-hardening-frontend": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Enterprise-grade SvelteKit frontend production hardening",
+            "promptTriggers": {
+                "keywords": [
+                    "sveltekit security",
+                    "frontend hardening",
+                    "production hardening",
+                    "csp",
+                    "content security policy",
+                    "xss prevention",
+                    "csrf protection",
+                    "core web vitals",
+                    "wcag",
+                    "accessibility",
+                    "a11y",
+                    "vercel deployment",
+                    "netlify deployment",
+                    "cloudflare pages",
+                    "service worker",
+                    "pwa",
+                    "progressive web app",
+                    "security headers",
+                    "bundle optimization",
+                    "performance budget",
+                    "sveltekit production"
+                ],
+                "intentPatterns": [
+                    "(secure|harden|production).*?(frontend|sveltekit)",
+                    "(implement|configure|setup).*?(csp|xss|csrf|security headers)",
+                    "(optimize|improve|fix).*?(performance|core web vitals|bundle size)",
+                    "(deploy|production|release).*?(sveltekit|frontend)",
+                    "(make|ensure).*?(accessible|wcag|a11y)",
+                    "(add|implement).*?(service worker|pwa|offline)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/hooks.server.ts",
+                    "**/hooks.client.ts",
+                    "**/svelte.config.js",
+                    "**/vite.config.js",
+                    "**/vite.config.ts",
+                    "**/service-worker.ts",
+                    "**/service-worker.js",
+                    "**/.lighthouserc.yml",
+                    "**/.lighthouserc.json"
+                ],
+                "contentPatterns": [
+                    "Content-Security-Policy",
+                    "X-Frame-Options",
+                    "Strict-Transport-Security",
+                    "DOMPurify",
+                    "@sentry/sveltekit",
+                    "Core Web Vitals",
+                    "@sveltejs/adapter",
+                    "web-vitals"
+                ]
+            }
+        },
+        "production-hardening-backend": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Enterprise-grade Rust backend production hardening",
+            "promptTriggers": {
+                "keywords": [
+                    "rust backend security",
+                    "production hardening",
+                    "cargo audit",
+                    "cargo deny",
+                    "rust security",
+                    "circuit breaker",
+                    "fault tolerance",
+                    "resilience patterns",
+                    "observability rust",
+                    "structured logging",
+                    "prometheus metrics",
+                    "opentelemetry",
+                    "container hardening",
+                    "docker security",
+                    "kubernetes security",
+                    "nist controls",
+                    "owasp backend",
+                    "rust production",
+                    "tokio runtime",
+                    "axum security",
+                    "actix security"
+                ],
+                "intentPatterns": [
+                    "(secure|harden|production).*?(backend|rust|service)",
+                    "(implement|add|setup).*?(circuit breaker|retry|fault tolerance|resilience)",
+                    "(configure|setup|enable).*?(monitoring|logging|tracing|metrics|observability)",
+                    "(deploy|production|release).*?(rust|backend|service)",
+                    "(audit|scan|check).*?(dependencies|vulnerabilities|security|crates)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/Cargo.toml",
+                    "**/Dockerfile",
+                    "**/.cargo/deny.toml",
+                    "**/src/main.rs",
+                    "**/deployment.yaml",
+                    "**/k8s/**/*.yaml",
+                    "**/.github/workflows/*.yml"
+                ],
+                "contentPatterns": [
+                    "cargo audit",
+                    "cargo deny",
+                    "failsafe::",
+                    "tower::",
+                    "tracing::",
+                    "prometheus",
+                    "opentelemetry",
+                    "axum::",
+                    "actix_web::"
+                ]
+            }
+        },
+        "rust-backend-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Comprehensive Rust backend development guide for production-grade web services",
+            "promptTriggers": {
+                "keywords": [
+                    "rust",
+                    "rust backend",
+                    "rust service",
+                    "rust api",
+                    "rust web",
+                    "axum",
+                    "sqlx",
+                    "tokio",
+                    "actix-web",
+                    "rocket",
+                    "bmc pattern",
+                    "rust10x",
+                    "derive_more",
+                    "cargo workspace",
+                    "rust database",
+                    "rust error handling",
+                    "rust async",
+                    "rust authentication",
+                    "rust testing",
+                    "sea-query",
+                    "backend model controller"
+                ],
+                "intentPatterns": [
+                    "(create|add|build|implement).*?(rust|backend|service|api|endpoint|route)",
+                    "(how does|how do|explain|what is).*?(rust|axum|sqlx|tokio|bmc)",
+                    "(handle|implement).*?(error|async|database).*?rust",
+                    "(test|benchmark|optimize).*?rust",
+                    "(deploy|docker).*?rust",
+                    "(structure|organize|refactor).*?rust.*?(backend|service|project)",
+                    "(secure|authenticate|authorize).*?rust"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/*.rs",
+                    "**/Cargo.toml",
+                    "crates/**/*.rs",
+                    "src/**/*.rs",
+                    "backend/**/*.rs",
+                    "services/**/*.rs"
+                ],
+                "pathExclusions": [
+                    "target/**",
+                    "**/*.test.rs"
+                ],
+                "contentPatterns": [
+                    "use axum::",
+                    "use sqlx::",
+                    "use tokio::",
+                    "#\\[tokio::main\\]",
+                    "#\\[tokio::test\\]",
+                    "async fn.*->.*Result",
+                    "impl.*Bmc",
+                    "use actix_web::",
+                    "use rocket::"
+                ]
+            }
+        },
+        "sveltekit-pwa-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Comprehensive guidelines for building mobile-friendly Progressive Web Apps with SvelteKit",
+            "promptTriggers": {
+                "keywords": [
+                    "pwa",
+                    "progressive web app",
+                    "service worker",
+                    "offline support",
+                    "offline capabilities",
+                    "push notifications",
+                    "web push",
+                    "manifest.json",
+                    "installable app",
+                    "mobile pwa",
+                    "sveltekit pwa",
+                    "cache strategy",
+                    "background sync",
+                    "workbox",
+                    "pwa setup",
+                    "mobile optimization",
+                    "touch gestures",
+                    "pwa deployment",
+                    "lighthouse pwa",
+                    "install prompt",
+                    "app badge",
+                    "native-like",
+                    "mobile-first",
+                    "offline-first"
+                ],
+                "intentPatterns": [
+                    "(create|build|implement|setup|add).*?(pwa|progressive web app|service worker|offline)",
+                    "(enable|add|implement).*?(push notifications|offline support|background sync)",
+                    "(make|convert|transform).*?(installable|mobile app|pwa)",
+                    "(optimize|improve).*?(mobile|offline|caching|performance).*?pwa",
+                    "(deploy|publish).*?pwa",
+                    "(test|debug).*?(service worker|pwa|offline|push notifications)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/service-worker.js",
+                    "**/service-worker.ts",
+                    "**/manifest.json",
+                    "**/vite.config.{js,ts}",
+                    "**/svelte.config.js",
+                    "**/+layout.svelte",
+                    "**/**/InstallPrompt.svelte",
+                    "**/**/OfflineIndicator.svelte"
+                ],
+                "contentPatterns": [
+                    "@vite-pwa/sveltekit",
+                    "SvelteKitPWA",
+                    "self.addEventListener.*install",
+                    "self.addEventListener.*activate",
+                    "self.addEventListener.*fetch",
+                    "self.addEventListener.*push",
+                    "self.addEventListener.*notificationclick",
+                    "caches.open",
+                    "navigator.serviceWorker",
+                    "PushManager",
+                    "Notification.permission",
+                    "workbox"
+                ]
+            }
+        },
+        "mobile-pwa-design": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Mobile-first PWA design for cross-device responsive frontends with touch optimization and accessibility",
+            "promptTriggers": {
+                "keywords": [
+                    "mobile design",
+                    "mobile first",
+                    "mobile-first",
+                    "responsive design",
+                    "touch interaction",
+                    "touch target",
+                    "mobile navigation",
+                    "thumb zone",
+                    "core web vitals",
+                    "mobile performance",
+                    "mobile accessibility",
+                    "WCAG mobile",
+                    "screen reader mobile",
+                    "container query",
+                    "mobile breakpoint",
+                    "adaptive layout",
+                    "fluid typography",
+                    "safe area inset"
+                ],
+                "intentPatterns": [
+                    "(create|build|design|implement).*?(mobile|responsive)",
+                    "(optimize|improve|fix).*?(mobile|touch|performance|accessibility|responsive)",
+                    "(responsive|mobile-first).*?(design|layout|grid|flexbox)",
+                    "(test|debug).*?(mobile|touch|responsive)",
+                    "(how to|how do I).*?(mobile|responsive|touch)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/*.svelte",
+                    "**/+layout.svelte",
+                    "**/+page.svelte",
+                    "**/*.css",
+                    "**/app.html",
+                    "**/global.css"
+                ],
+                "pathExclusions": [
+                    "**/*.test.js",
+                    "**/*.spec.js",
+                    "**/node_modules/**"
+                ],
+                "contentPatterns": [
+                    "min-width.*@media",
+                    "@media.*min-width",
+                    "container-type.*inline-size",
+                    "@container",
+                    "touch-action",
+                    "env\\(safe-area-inset",
+                    "clamp\\(",
+                    "srcset=",
+                    "loading=\"lazy\"",
+                    "min-height.*44px",
+                    "min-width.*44px"
+                ]
+            }
         }
     },
     "notes": {
