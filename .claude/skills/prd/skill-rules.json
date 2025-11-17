@@ -1,0 +1,73 @@
+{
+  "prd-creation": {
+    "type": "domain",
+    "enforcement": "suggest",
+    "priority": "high",
+    "promptTriggers": {
+      "keywords": [
+        "prd",
+        "product requirements document",
+        "product requirements",
+        "product specification",
+        "product spec",
+        "requirements document",
+        "feature specification",
+        "feature spec",
+        "user stories",
+        "acceptance criteria",
+        "product planning",
+        "mvp definition",
+        "minimum viable product",
+        "product roadmap",
+        "release planning",
+        "success metrics",
+        "kpis",
+        "product goals",
+        "user personas",
+        "functional requirements",
+        "non-functional requirements",
+        "technical specifications",
+        "agile requirements",
+        "product backlog"
+      ],
+      "intentPatterns": [
+        "(create|write|draft|generate|build|make).*?(prd|product requirements|product spec|requirements document)",
+        "(need|want|should|help|how).*?(prd|product requirements|requirements document)",
+        "(document|specify|define).*?(product|feature|requirements)",
+        "write.*?(user stories|acceptance criteria)",
+        "(plan|planning).*?(product|mvp|release|sprint)",
+        "(define|establish|set).*?(success metrics|kpis|goals)",
+        "create.*?(user personas|user flows|wireframes)"
+      ]
+    },
+    "fileTriggers": {
+      "pathPatterns": [
+        "**/PRD*.md",
+        "**/prd*.md",
+        "**/requirements/**/*.md",
+        "**/product-specs/**/*.md",
+        "**/specifications/**/*.md",
+        "**/docs/products/**/*.md",
+        "**/docs/features/**/*.md"
+      ],
+      "pathExclusions": [
+        "**/node_modules/**",
+        "**/.git/**",
+        "**/dist/**",
+        "**/build/**",
+        "**/*.test.md"
+      ],
+      "contentPatterns": [
+        "Product Requirements Document",
+        "## Executive Summary",
+        "## User Personas",
+        "## Functional Requirements",
+        "## Success Metrics",
+        "Priority: P0|P1|P2",
+        "Acceptance Criteria:",
+        "User Story:",
+        "As a .* I want to .* so that"
+      ]
+    }
+  }
+}
